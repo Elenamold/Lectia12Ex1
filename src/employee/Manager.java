@@ -1,7 +1,7 @@
 package employee;
 
 public class Manager extends Employee implements Training, Interview {
-    boolean canAttendTraining;
+
     public Manager(String name){
         super(name);
         department = "Management Department";

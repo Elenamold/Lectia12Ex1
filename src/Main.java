@@ -1,7 +1,4 @@
-import employee.Training;
-import employee.Employee;
-import employee.Manager;
-import employee.Programer;
+import employee.*;
 import meetingRoom.MeetingRoom;
 
 import java.util.Arrays;
@@ -19,15 +16,21 @@ public class Main {
         programer1.setStaj(5);
         programer1.setEducation("Masterat");
 
+
+
         System.out.println("Exercitiu 1");
         System.out.println(manager1.toString() );
         System.out.println("can attend trainings " + manager1.canAttendTraining());
         System.out.println("can conduct interview " + manager1.canConductInterview());
 
+        Consultant consultant1 = new Consultant("Borta");
+        consultant1.setDepartment("Consulting Department");
+        consultant1.setEducation("Bacalaur");
+        consultant1.setStaj(10);
 
 
         System.out.println("Exercitiu 2");
-        List<Training> trainers = Arrays.asList(programer1, manager1, new Manager("Margina",20));
+        List<Training> trainers = Arrays.asList(programer1, manager1, new Manager("Margina",20), consultant1);
         MeetingRoom meetingRoom = new MeetingRoom(trainers);
         meetingRoom.afisaLista(trainers);
 
