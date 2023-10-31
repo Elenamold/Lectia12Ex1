@@ -6,6 +6,14 @@ import java.util.List;
 
 
 public class Main {
+    public static void PrintEmployees(List<Employee> employees, CheckCondition condition){
+        for (Employee element: employees  )        {
+            if (condition.check(element)) {
+                System.out.println(element);
+            }
+        }
+
+    }
     public static void main(String[] args) {
 
         Manager manager1 = new Manager("Sirbu");
@@ -13,7 +21,7 @@ public class Main {
         manager1.setEducation("Bacalaur");
 
         Programer programer1 = new Programer("Popescu");
-        programer1.setStaj(5);
+        programer1.setStaj(15);
         programer1.setEducation("Masterat");
 
 
@@ -39,7 +47,7 @@ public class Main {
         System.out.println("Exercitiu 3");
         List<Employee> employees = Arrays.asList(programer1, manager1);
         for ( Employee element : employees ) {
-            System.out.println(element.toString());
+          //  System.out.println(element.toString());
             if (element instanceof Programer) {
                 Programer pr = (Programer) element;
                 System.out.println("can attend trainings " + pr.canAttendTraining());
@@ -50,19 +58,22 @@ public class Main {
                 System.out.println("can conduct interview " + mngr.canConductInterview());
             }
         }
-        for ( Employee element : Arrays.asList(programer1, manager1, new Manager("Ivanov") ) ){
-            System.out.println(element.toString());
-            if (element instanceof Programer) {
-                Programer pr = (Programer) element;
-                System.out.println("can attend trainings " + pr.canAttendTraining());
-                System.out.println("can conduct interview " + pr.canConductInterview());
-            } else if (element instanceof Manager) {
-                Manager mngr = (Manager) element;
-                System.out.println("can attend trainings " + mngr.canAttendTraining());
-                System.out.println("can conduct interview " + mngr.canConductInterview());
-            }
-        }
-
+//        for ( Employee element : Arrays.asList(programer1, manager1, new Manager("Ivanov") ) ){
+//            System.out.println(element.toString());
+//            if (element instanceof Programer) {
+//                Programer pr = (Programer) element;
+//                System.out.println("can attend trainings " + pr.canAttendTraining());
+//                System.out.println("can conduct interview " + pr.canConductInterview());
+//            } else if (element instanceof Manager) {
+//                Manager mngr = (Manager) element;
+//                System.out.println("can attend trainings " + mngr.canAttendTraining());
+//                System.out.println("can conduct interview " + mngr.canConductInterview());
+//            }
+//        }
+//
+//
+        PrintEmployees( employees, (Employee element)->element.getName().equals("Sirbu"));
+        PrintEmployees( employees, (Employee element)->element.getStaj()>10 && element.getDepartment().equals("Software Department"));
 
     }
 }
